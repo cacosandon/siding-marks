@@ -64,58 +64,55 @@ def get_qual(credentials):
         os.remove("templates/table.html")
     s.close()
 
-    with open("templates/table.html", 'w', encoding="utf-8") as display:
-        display.write("""
+    string = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Notas SIDING</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='table/images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/perfect-scrollbar/perfect-scrollbar.css"') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/css/main.css') }}">
+    <!--===============================================================================================-->
+    </head>
+    <body>
+        <form action = "/" class="contact100-form validate-form">
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn">
+                    <span>
+                        <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>"""+ name_button + """
+                    </span>
+                </button>
+            </div>
+        </form>
+        """ + html_string +"""
 
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <title>Notas SIDING</title>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--===============================================================================================-->
-            <link rel="icon" type="image/png" href="{{ url_for('static', filename='table/images/icons/favicon.ico') }}"/>
-        <!--===============================================================================================-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/bootstrap/css/bootstrap.min.css') }}">
-        <!--===============================================================================================-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-        <!--===============================================================================================-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/animate/animate.css') }}">
-        <!--===============================================================================================-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/select2/select2.min.css') }}">
-        <!--===============================================================================================-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/vendor/perfect-scrollbar/perfect-scrollbar.css"') }}">
-        <!--===============================================================================================-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/css/util.css') }}">
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table/css/main.css') }}">
-        <!--===============================================================================================-->
-        </head>
-        <body>
-            <form action = "/" class="contact100-form validate-form">
-                <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
-                        <span>
-                            <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>"""+
-                            name_button + """
-                        </span>
-                    </button>
-                </div>
-            </form>
-            """ +
-            html_string
-            +"""
+    <!--===============================================================================================-->
+        <script src="{{ url_for('static', filename='table/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ url_for('static', filename='table/vendor/bootstrap/js/popper.js') }}"></script>
+        <script src="{{ url_for('static', filename='table/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ url_for('static', filename='table/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ url_for('static', filename='table/js/main.js') }}"></script>
 
-        <!--===============================================================================================-->
-            <script src="{{ url_for('static', filename='table/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-        <!--===============================================================================================-->
-            <script src="{{ url_for('static', filename='table/vendor/bootstrap/js/popper.js') }}"></script>
-            <script src="{{ url_for('static', filename='table/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-        <!--===============================================================================================-->
-            <script src="{{ url_for('static', filename='table/vendor/select2/select2.min.js') }}"></script>
-        <!--===============================================================================================-->
-            <script src="{{ url_for('static', filename='table/js/main.js') }}"></script>
+    </body>
+    </html>
 
-        </body>
-        </html>
+    """
 
-        """)
+    return string

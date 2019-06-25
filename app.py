@@ -1,6 +1,6 @@
 # -*- coding: latin-1 -*-
 
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, render_template_string
 from qualifications import get_qual
 from methods import logout
 
@@ -17,8 +17,8 @@ def result():
    if request.method == 'POST':
       result = request.form.to_dict()
       creds = f"login={result['login']}&passwd={result['passwd']}"
-      get_qual(creds)
-      return render_template("table.html")
+      string = get_qual(creds)
+      return render_template_string(string)
 
 if __name__ == '__main__':
    app.config['TEMPLATES_AUTO_RELOAD'] = True
