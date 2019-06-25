@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import os
 
 def logout():
     headers = {
@@ -18,9 +17,6 @@ def logout():
     actual_creds = {
     'creds': ''
     }
-
-    if os.path.exists("templates/table.html"):
-         os.remove("templates/table.html")
 
 
 def get_qual_link(link):
@@ -49,6 +45,8 @@ def rework(html):
         if "text-align : right" in tag["style"]:
             tag["style"] = "text-align : right"
             tag.attrs["class"] = "cells others"
+            if "colspan" in tag.attrs:
+                del tag["colspan"] 
         else:
             del tag["style"]
             tag.attrs["class"] = "cells"
@@ -58,6 +56,11 @@ def rework(html):
     for child in children:
         child.attrs["class"] = "header_table"
 
+    for tag in soup.find_all("tr")[1:3]:
+        children = children = tag.findChildren("td", recursive=False)
+        for child in children[:3]:
+            child.extract()
+            
     return str(soup)
 
 

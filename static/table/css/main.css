@@ -100,12 +100,10 @@ iframe {
 [ Table ]*/
 
 .limiter {
-  width: 100%;
   margin: 0 auto;
 }
 
 .container-table100 {
-  width: 100%;
   min-height: 100vh;
   background: #c4d3f6;
 
@@ -270,17 +268,17 @@ iframe {
 }
 
 .asignature {
-  padding: 20px;
+  padding: 12px;
   font-family: Poppins-Bold;
   font-size: 24px;
   color: #827ffe;
-  line-height: 1.2;
+  text-align: center;
+  align-content: center;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-
+  margin-left: auto;
+  margin-right: auto; 
 }
 
 th, td {

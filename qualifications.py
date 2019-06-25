@@ -2,18 +2,14 @@ import re
 from bs4 import BeautifulSoup
 from methods import get_qual_link, rework
 import requests
-import os
 
 def get_qual(credentials):
-    with open("templates/table.html", 'w', encoding="utf-8") as display:
-        display.write("helo")
     # Entering to cursos section
     headers = {
     'Content-Type': "application/x-www-form-urlencoded",
     'User-Agent': "PostmanRuntime/7.15.0",
     'Accept': "*/*",
     'Cache-Control': "no-cache",
-    'Postman-Token': "c5b75f78-611a-48d0-8925-3ebb4eb9c243,b603d810-f2f0-4167-9d5d-983fcccb327a",
     'Host': "intrawww.ing.puc.cl",
     'accept-encoding': "gzip, deflate",
     'Connection': "keep-alive",
@@ -46,10 +42,9 @@ def get_qual(credentials):
         for link in links:
             qual = "https://intrawww.ing.puc.cl/siding/dirdes/ingcursos/cursos/index.phtml?accion_curso=notas&acc_notas=mostrar_notas&"+link+"&solo_vista=1"
             response = s.get(qual, data=credentials, headers=headers, cookies=ck)
-            qual_soup = BeautifulSoup(response.text, "html.parser")
-            while "500 Internal Server Error" in qual_soup.title:
+            while "500 Internal Server Error" in response.text:
                 response = s.get(qual, data=credentials, headers=headers, cookies=ck)
-                qual_soup = BeautifulSoup(response.text, "html.parser")
+            qual_soup = BeautifulSoup(response.text, "html.parser")
             curso = ""
             for b_tag in qual_soup.find_all("td", class_=True):
                 if "ColorFondoResaltado" in b_tag["class"]:
@@ -60,8 +55,6 @@ def get_qual(credentials):
                 if "back" in table["style"]:
                         html_string += rework(curso + "\n" + str(table))
 
-    if os.path.exists("templates/table.html"):
-        os.remove("templates/table.html")
     s.close()
 
     string = """
