@@ -34,6 +34,7 @@ def rework(html):
 
     for tag in soup.find_all('table'):
         tag.attrs = {}
+        tag["style"] = "tablemobile"
 
     for tag in soup.find_all('td', class_="ColorFondoResaltado"):
         new_tag = soup.new_tag("div")
