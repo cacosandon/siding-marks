@@ -88,17 +88,6 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-select[type="number"] {
-  -moz-appearance: textfield;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-select[type="number"]::-webkit-outer-spin-button,
-select[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
 textarea {
   outline: none;
   border: none;
@@ -223,6 +212,14 @@ iframe {
   color: #8f8fa1;
   line-height: 1.2;
 }
+
+option {
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  color: #8f8fa1;
+}
+
+
 
 
 /*---------------------------------------------*/

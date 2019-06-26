@@ -30,11 +30,11 @@ def get_qual(credentials, period):
         ck = s.cookies.get_dict()
         url = "https://intrawww.ing.puc.cl" + period
         response = s.get(url, data=credentials, headers=headers, cookies=ck)
-
-        print(response.text)
         
         html_string = ""
         name_button = "Back"
+        if "Usted no tiene cursos este semestre" in response.text:
+            name_button = "No tienes cursos este semestre, vuelve atrás"
         soup = BeautifulSoup(response.text, "html.parser")
 
         links = []
