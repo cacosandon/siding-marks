@@ -25,6 +25,10 @@ def get_qual_link(link):
     return id_curso
 
 def rework(html):
+    def wrap(to_wrap, wrap_in):
+        contents = to_wrap.replace_with(wrap_in)
+        wrap_in.append(contents)
+
     text = html
     soup = BeautifulSoup(text, "html.parser")
 
@@ -34,7 +38,7 @@ def rework(html):
 
     for tag in soup.find_all('table'):
         tag.attrs = {}
-        tag["style"] = "tablemobile"
+        tag["class"] = "tablemobile"
 
     for tag in soup.find_all('td', class_="ColorFondoResaltado"):
         new_tag = soup.new_tag("div")
