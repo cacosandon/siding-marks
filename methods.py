@@ -38,7 +38,10 @@ def rework(html):
 
     for tag in soup.find_all('table'):
         tag.attrs = {}
-        tag["class"] = "tablemobile"
+        new_tag = soup.new_tag("div")
+        new_tag['style'] = 'display: block; overflow-x: auto;'
+        wrap(tag, new_tag)
+
 
     for tag in soup.find_all('td', class_="ColorFondoResaltado"):
         new_tag = soup.new_tag("div")

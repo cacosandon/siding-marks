@@ -108,6 +108,7 @@ table {
   margin-left: auto;
   margin-right: auto; 
   table-layout:fixed;
+  border-collapse: collapse;
 }
 
 th, td {
@@ -121,15 +122,6 @@ td {
   text-overflow: ellipsis; 
   word-wrap: break-word;
 }
-
-@media only screen and (max-width: 480px) {
-  /* horizontal scrollbar for tables if mobile screen */
-  .tablemobile {
-      overflow-x: auto;
-      display: block;
-  }
-}
-
 
 .header_table{
   padding: 10px;
