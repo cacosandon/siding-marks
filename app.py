@@ -17,7 +17,8 @@ def result():
    if request.method == 'POST':
       result = request.form.to_dict()
       creds = f"login={result['login']}&passwd={result['passwd']}"
-      string = get_qual(creds)
+      period = result["periodo"]
+      string = get_qual(creds, period)
       return render_template_string(string)
 
 if __name__ == '__main__':

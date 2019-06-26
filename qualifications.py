@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from methods import get_qual_link, rework
 import requests
 
-def get_qual(credentials):
+def get_qual(credentials, period):
     # Entering to cursos section
     headers = {
     'Content-Type': "application/x-www-form-urlencoded",
@@ -28,8 +28,11 @@ def get_qual(credentials):
 
     else:
         ck = s.cookies.get_dict()
-        url = "https://intrawww.ing.puc.cl/siding/dirdes/ingcursos/cursos/index.phtml"
+        url = "https://intrawww.ing.puc.cl" + period
         response = s.get(url, data=credentials, headers=headers, cookies=ck)
+
+        print(response.text)
+        
         html_string = ""
         name_button = "Back"
         soup = BeautifulSoup(response.text, "html.parser")

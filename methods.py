@@ -65,10 +65,10 @@ def rework(html):
         child.attrs["class"] = "header_table"
 
     for tag in soup.find_all("tr")[1:3]:
-        children = children = tag.findChildren("td", recursive=False)
+        children = tag.findChildren("td", recursive=False)
         for child in children[:3]:
             child.extract()
-            
+  
     return str(soup)
 
 
